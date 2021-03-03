@@ -1,7 +1,9 @@
 // Note: Please do not change the name of the functions. The tests use those names to validate your code.
 
 function findAccountById(accounts, id) {
-  return accounts.find((account) => account.id == id);
+  return accounts.find(
+    (account) => account.id == id
+  );
 }
 
 function sortAccountsByLastName(accounts) {
@@ -23,13 +25,15 @@ function getTotalNumberOfBorrows(account, books) {
 
 function getBooksPossessedByAccount(account, books, authors) {
   return books
-    .filter(
+    .filter( // possible to destructure variables with [] // const [example] = arr.key;
       ({ borrows }) => borrows[0].id === account.id && !borrows[0].returned
     )
-    .map((book) => {
-      const author = authors.find((auth) => auth.id === book.authorId);
-      return { ...book, author };
-    });
+    .map(
+      (book) => {
+        const author = authors.find((auth) => auth.id === book.authorId);
+        return { ...book, author };
+      }
+    );
 }
 
 module.exports = {
