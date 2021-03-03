@@ -28,16 +28,33 @@ function partitionBooksByBorrowedStatus(books) {
 }
 
 function getBorrowersForBook(book, accounts) {
+  // TA help:
+  const acctID = accounts.reduce(
+    (acc, account)=>{
+      acc[account.id] = account;
+      return acc;
+    },{}
+  )
   return book.borrows
-    .map(
-      (transaction) => {
-        const acctPair = accounts.find(
-          (acct) => acct.id === transaction.id
-        );
-      return { ...transaction, ...acctPair };
+  .map(
+    ({id, returned})=>(
+      {
+        ...acctID[id],
+        returned
       }
     )
-    .slice(0, 10);
+  )
+  .slice(0, 10);
+  // return book.borrows
+  //   .map(
+  //     (transaction) => {
+  //       const acctPair = accounts.find(
+  //         (acct) => acct.id === transaction.id
+  //       );
+  //     return { ...transaction, ...acctPair };
+  //     }
+  //   )
+  //   .slice(0, 10);
 }
 
 module.exports = {

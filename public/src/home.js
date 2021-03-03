@@ -24,13 +24,22 @@ function getMostCommonGenres(books) { // try using .reduce() for a smaller f(x)
       if (books[book].genre === arr[idx].name) {
         firstRun = true;
         arr[idx].count++;
+        // arr[idx].count = books.reduce(function (acc, cur){ return acc + cur;});
       }
-    } // below line pushes the appropriate shape
+    } 
+    // below line pushes the appropriate shape
     if (firstRun === false) {
       arr.push(
         { name: books[book].genre, count: 1 }
       );
+      // const test = books.reduce(
+      //   (acc, book)=>{
+      //     acc[book.genre] = 1;
+      //     return acc;
+      // }, {});
+      // console.log(test);
     }
+    
   }
   return arr
     .sort(
