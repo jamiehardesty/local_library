@@ -45,6 +45,9 @@ function getBorrowersForBook(book, accounts) {
     )
   )
   .slice(0, 10);
+  //
+  // FORMER SOLUTION: 
+  //
   // return book.borrows
   //   .map(
   //     (transaction) => {
@@ -56,7 +59,6 @@ function getBorrowersForBook(book, accounts) {
   //   )
   //   .slice(0, 10);
 }
-// added comment for new commit note lol
 
 module.exports = {
   findAuthorById,
