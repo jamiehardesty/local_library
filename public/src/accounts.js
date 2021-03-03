@@ -30,7 +30,9 @@ function getBooksPossessedByAccount(account, books, authors) {
     )
     .map(
       (book) => {
-        const author = authors.find((auth) => auth.id === book.authorId);
+        const author = authors.find(
+          (auth) => auth.id === book.authorId
+        );
         return { ...book, author };
       }
     );
